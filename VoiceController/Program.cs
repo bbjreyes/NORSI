@@ -124,15 +124,23 @@ namespace VoiceController
                 Enabled = true
             };
 
-            sre = new SpeechRecognitionEngine();
-            sre.SetInputToDefaultAudioDevice();
+            try
+            {
 
-            sre.LoadGrammar(gram);
-            gram.SpeechRecognized += OnSpeechRecognized;
+                sre = new SpeechRecognitionEngine();
+                sre.SetInputToDefaultAudioDevice();
 
-            sre.RecognizeAsync(RecognizeMode.Multiple);
+                sre.LoadGrammar(gram);
+                gram.SpeechRecognized += OnSpeechRecognized;
 
-            Console.WriteLine("*** Recognition Engine Ready! ***\n");
+                sre.RecognizeAsync(RecognizeMode.Multiple);
+
+                Console.WriteLine("*** Recognition Engine Ready! ***\n");
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine($"Uh oh:\n\n {e.Message}");
+            }
         }
 
         private static string EvaluateResponse(string response)

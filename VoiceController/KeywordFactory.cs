@@ -58,7 +58,7 @@ namespace VoiceController
                        select new ParentKeyword()
                        {
                            Keyword = e?.Attribute("name")?.Value,
-                           Children = (from c in e.Descendants("child")
+                           Children = (from c in e?.Descendants("child")
                                        select new ChildKeyword()
                                        {
                                            Keyword = c?.Attribute("name")?.Value,
