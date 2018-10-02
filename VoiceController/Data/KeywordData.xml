@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Parents>
+  <Parent name="System">
+    <child name="Switch" sequence="%{TAB}"></child>
+    <child name="Tasks" sequence="^%{TAB}"></child>
+    <child name="Select" sequence="{ENTER}"></child>
+    <child name="Tab" sequence="{TAB}"></child>
+  </Parent>
+  <Parent name="Format">
+    <child name="Copy" sequence="^(C)"></child>
+    <child name="Cut" sequence="^(X)"></child>
+    <child name="Paste" sequence="^(V)"></child>
+    <child name="Line Start" sequence="{HOME}"></child>
+    <child name="Block Start" sequence="^({HOME})"></child>
+    <child name="Get Line" sequence="+({END})"></child>
+    <child name="Get Block" sequence="^+({END})"></child>
+  </Parent>
+</Parents>
