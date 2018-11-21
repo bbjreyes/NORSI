@@ -19,7 +19,7 @@ namespace VoiceController
         static void Main(string[] args)
         {
             
-            KeywordFactory.OnDefaultParentChanged += KeywordFactory_OnDefaultParentChanged;
+            KeywordFactory.DefaultParentChanged += KeywordFactory_OnDefaultParentChanged;
             LoadGrammar();
 
             PrintLogo();
@@ -126,7 +126,6 @@ namespace VoiceController
 
             try
             {
-
                 sre = new SpeechRecognitionEngine();
                 sre.SetInputToDefaultAudioDevice();
 

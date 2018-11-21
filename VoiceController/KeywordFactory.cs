@@ -10,7 +10,7 @@ namespace VoiceController
     public static class KeywordFactory
     {
         public delegate void DefaultParentChangedEventHandler();
-        public static event DefaultParentChangedEventHandler OnDefaultParentChanged;
+        public static event DefaultParentChangedEventHandler DefaultParentChanged;
 
         private static string _defaultParent;
         public static string DefaultParent
@@ -22,7 +22,7 @@ namespace VoiceController
             set
             {
                 _defaultParent = value;
-                OnDefaultParentChanged?.Invoke();
+                DefaultParentChanged?.Invoke();
             }
         }
         private static List<ParentKeyword> _parents;
