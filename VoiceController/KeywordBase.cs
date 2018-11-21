@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace VoiceController
 {
-    public class ParentKeyword : KeywordBase
+    public class KeywordBase
     {
-        public List<ChildKeyword> Children { get; set; }
+        public string Keyword { get; set; }
     }
-
 }

@@ -76,6 +76,7 @@
   <ItemGroup>
     <Compile Include="ChildKeyword.cs" />
     <Compile Include="CoreCommands.cs" />
+    <Compile Include="KeywordBase.cs" />
     <Compile Include="KeywordFactory.cs" />
     <Compile Include="ParentKeyword.cs" />
     <Compile Include="Program.cs" />

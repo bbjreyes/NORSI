@@ -17,14 +17,11 @@ namespace VoiceController
 
 
         static void Main(string[] args)
-        {
-            
+        {            
             KeywordFactory.DefaultParentChanged += KeywordFactory_OnDefaultParentChanged;
-            LoadGrammar();
 
-            PrintLogo();
-            Console.WriteLine("\nWelcome to NORSI. If you are new here, type 'help' and hit enter to learn what you can do.\n");
-            Console.Write("> ");
+            LoadGrammar();
+            PrintLogoAndWelcome();
 
             string response = string.Empty;
             response = Console.ReadLine();
@@ -35,7 +32,6 @@ namespace VoiceController
                 Console.Write("> ");
                 response = Console.ReadLine();
             };
-            
         }
 
         private static void KeywordFactory_OnDefaultParentChanged()
@@ -56,7 +52,6 @@ namespace VoiceController
             string[] rootChoices = new string[KeywordFactory.Parents.Count];
             GrammarBuilder[] gbAll = new GrammarBuilder[KeywordFactory.Parents.Count];
             Choices choices = null;
-
 
             for (int p = 0; p < KeywordFactory.Parents.Count; p++)
             {
@@ -107,14 +102,12 @@ namespace VoiceController
                     };
                 }
 
-                // New - testing for quantity
+                // Check for quantity
                 string[] quantifiers = KeywordFactory.GetQuantifiers();
                 Choices quantiferChoices = new Choices(quantifiers);
 
                 gbAll[p].Append(quantiferChoices, 0, 1);
-                // End
             }
-
             Choices allChoices = new Choices();
             allChoices.Add(gbAll);
 
@@ -133,7 +126,6 @@ namespace VoiceController
                 gram.SpeechRecognized += OnSpeechRecognized;
 
                 sre.RecognizeAsync(RecognizeMode.Multiple);
-
                 Console.WriteLine("*** Recognition Engine Ready! ***\n");
             }
             catch(Exception e)
@@ -246,7 +238,7 @@ namespace VoiceController
             return wordToCheck;
         }
 
-        private static void PrintLogo()
+        private static void PrintLogoAndWelcome()
         {
             Console.WriteLine("===============================================================================================");
             Console.Write("||\\    ||  ||||||  ||||||||  ||||||  ||"); Console.Write("                  //\n");
@@ -255,6 +247,9 @@ namespace VoiceController
             Console.Write("||   \\ || ||    || ||  ||         || ||"); Console.Write("                   -----\n");
             Console.Write("||    \\||  ||||||  ||    ||  ||||||  ||"); Console.Write("     ============= ---\n");
             Console.WriteLine("===============================================================================================");
+
+            Console.WriteLine("\nWelcome to NORSI. If you are new here, type 'help' and hit enter to learn what you can do.\n");
+            Console.Write("> ");
         }
     }
 }
